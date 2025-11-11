@@ -1,0 +1,83 @@
+const mongoose = require('mongoose');
+
+/**
+ * Attendance Model (Refactored)
+ * 
+ * Authoritative Business Rule:
+ * - Attendance is unique per Batch-Course-Date (enforced by compound index)
+ * - Only the assigned Faculty (from BatchCourseAssignment) can mark attendance
+ * - Date is normalized to midnight (00:00:00) to avoid timezone duplicates
+ * 
+ * Migration Note:
+ * - Old model used student-course-date uniqueness (per-student records)
+ * - New model uses batch-course-date uniqueness (single record per day with all students)
+ * - Batch replaces the old classId terminology
+ */
+const AttendanceSchema = new mongoose.Schema({
+  batchId: {
+    type: mongoose.Schema.ObjectId,
+    ref: 'Batch',
+    required: [true, 'Batch ID is required'],
+  },
+  courseId: {
+    type: mongoose.Schema.ObjectId,
+    ref: 'Course',
+    required: [true, 'Course ID is required'],
+  },
+  facultyId: {
+    type: mongoose.Schema.ObjectId,
+    ref: 'User',
+    required: [true, 'Faculty ID is required'],
+  },
+  date: {
+    type: Date,
+    required: [true, 'Date is required'],
+    // Date is normalized to midnight in controller via normalizeDate utility
+  },
+  records: [
+    {
+      studentId: {
+        type: mongoose.Schema.ObjectId,
+        ref: 'User',
+        required: true,
+      },
+      status: {
+        type: String,
+        enum: ['present', 'absent', 'late'],
+        default: 'absent',
+      },
+      remark: {
+        type: String,
+        default: '',
+      },
+    },
+  ],
+  createdAt: {
+    type: Date,
+    default: Date.now,
+  },
+  updatedAt: {
+    type: Date,
+    default: Date.now,
+  },
+});
+
+// Compound unique index: enforce one attendance record per batch-course-date
+AttendanceSchema.index(
+  { batchId: 1, courseId: 1, date: 1 }, 
+  { unique: true }
+);
+
+// Index for efficient queries by faculty
+AttendanceSchema.index({ facultyId: 1, date: -1 });
+
+// Index for student attendance lookups
+AttendanceSchema.index({ 'records.studentId': 1, date: -1 });
+
+// Update timestamp on save
+AttendanceSchema.pre('save', function(next) {
+  this.updatedAt = Date.now();
+  next();
+});
+
+module.exports = mongoose.model('Attendance', AttendanceSchema);

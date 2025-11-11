@@ -1,0 +1,1020 @@
+/* Attendance Marking - Redesigned UI */
+.attendance-marking-container {
+  padding: 2rem;
+  max-width: 1400px;
+  margin: 0 auto;
+  animation: fadeIn 0.5s ease-in;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 2px solid #e5e7eb;
+  animation: slideDown 0.5s ease-out;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.header-icon {
+  width: 60px;
+  height: 60px;
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.header-icon svg {
+  width: 32px;
+  height: 32px;
+}
+
+.page-title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 0.25rem;
+}
+
+.page-subtitle {
+  color: #6b7280;
+  font-size: 0.95rem;
+  font-weight: 400;
+}
+
+.current-time-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  color: white;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  box-shadow: 0 4px 6px rgba(59, 130, 246, 0.3);
+}
+
+.current-time-badge .icon {
+  width: 20px;
+  height: 20px;
+}
+
+/* Filters Card */
+.filters-card {
+  background: white;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e5e7eb;
+  animation: slideUp 0.5s ease-out;
+}
+
+.filters-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.25rem;
+}
+
+/* Form Elements */
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group label {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+  color: #374151;
+  font-size: 0.875rem;
+  display: block;
+}
+
+.required {
+  color: #dc2626;
+  margin-left: 0.25rem;
+}
+
+.input-with-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-icon {
+  position: absolute;
+  left: 0.75rem;
+  width: 18px;
+  height: 18px;
+  color: #9ca3af;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 0.5rem 0.75rem 0.5rem 2.75rem;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  background: white;
+  color: #374151;
+}
+
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.bulk-action-group {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.bulk-action-group select {
+  flex: 1;
+  padding: 0.5rem 0.75rem;
+}
+
+.btn-apply {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1.25rem;
+  background: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.875rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.btn-apply svg {
+  width: 16px;
+  height: 16px;
+}
+
+.btn-apply:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-apply:hover:not(:disabled) {
+  background: #2563eb;
+  box-shadow: 0 4px 6px rgba(59, 130, 246, 0.3);
+}
+
+/* Stats Row */
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 1.5rem;
+  animation: slideUp 0.6s ease-out;
+}
+
+.stat-card {
+  background: white;
+  padding: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e5e7eb;
+  transition: all 0.3s ease;
+  border-left: 4px solid;
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+}
+
+.stat-card.present {
+  border-left-color: #16a34a;
+  background: linear-gradient(135deg, rgba(220, 252, 231, 0.3) 0%, rgba(255, 255, 255, 1) 100%);
+}
+
+.stat-card.absent {
+  border-left-color: #dc2626;
+  background: linear-gradient(135deg, rgba(254, 242, 242, 0.5) 0%, rgba(255, 255, 255, 1) 100%);
+}
+
+.stat-card.total {
+  border-left-color: #3b82f6;
+  background: linear-gradient(135deg, rgba(239, 246, 255, 0.5) 0%, rgba(255, 255, 255, 1) 100%);
+}
+
+.stat-card.percentage {
+  border-left-color: #9333ea;
+  background: linear-gradient(135deg, rgba(250, 245, 255, 0.5) 0%, rgba(255, 255, 255, 1) 100%);
+}
+
+.stat-icon {
+  width: 50px;
+  height: 50px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.stat-card.present .stat-icon {
+  background: #dcfce7;
+  color: #16a34a;
+}
+
+.stat-card.absent .stat-icon {
+  background: #fecaca;
+  color: #dc2626;
+}
+
+.stat-card.total .stat-icon {
+  background: #dbeafe;
+  color: #3b82f6;
+}
+
+.stat-card.percentage .stat-icon {
+  background: #f3e8ff;
+  color: #9333ea;
+}
+
+.stat-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+.stat-details {
+  flex: 1;
+}
+
+.stat-value {
+  font-size: 1.875rem;
+  font-weight: 700;
+  color: #1f2937;
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 0.875rem;
+  color: #6b7280;
+  font-weight: 500;
+  margin-top: 0.25rem;
+}
+
+/* Students Card */
+.students-card {
+  background: white;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e5e7eb;
+  animation: slideUp 0.7s ease-out;
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 2px solid #f3f4f6;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.card-header h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #1f2937;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.card-header h3 .header-icon {
+  width: 24px;
+  height: 24px;
+  color: #3b82f6;
+  background: none;
+}
+
+.search-box {
+  position: relative;
+  min-width: 300px;
+  flex: 1;
+  max-width: 400px;
+}
+
+.search-icon {
+  position: absolute;
+  left: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  color: #9ca3af;
+}
+
+.search-box input {
+  width: 100%;
+  padding: 0.5rem 0.75rem 0.5rem 2.5rem;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.search-box input:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.search-box input::placeholder {
+  color: #9ca3af;
+}
+
+.students-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+  gap: 1rem;
+}
+
+.student-card {
+  position: relative;
+  padding: 1.25rem;
+  background: white;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  transition: all 0.3s ease;
+}
+
+.student-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border-color: #d1d5db;
+}
+
+.student-card.present {
+  border-color: #16a34a;
+  background: linear-gradient(135deg, rgba(220, 252, 231, 0.2) 0%, rgba(255, 255, 255, 1) 100%);
+}
+
+.student-card.absent {
+  border-color: #dc2626;
+  background: linear-gradient(135deg, rgba(254, 242, 242, 0.3) 0%, rgba(255, 255, 255, 1) 100%);
+}
+
+.student-number {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background: #f3f4f6;
+  color: #6b7280;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  font-weight: 600;
+}
+
+.student-info {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.student-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.25rem;
+  flex-shrink: 0;
+  box-shadow: 0 2px 4px rgba(59, 130, 246, 0.3);
+}
+
+.student-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.student-name {
+  font-weight: 600;
+  color: #1f2937;
+  font-size: 1rem;
+}
+
+.student-roll {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  font-size: 0.75rem;
+}
+
+.roll-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  background: #dbeafe;
+  color: #1e40af;
+  padding: 0.125rem 0.5rem;
+  border-radius: 9999px;
+  font-weight: 600;
+  width: fit-content;
+}
+
+.roll-badge svg {
+  width: 12px;
+  height: 12px;
+}
+
+.email-text {
+  color: #6b7280;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Radio Buttons */
+.attendance-radio-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+}
+
+.radio-option {
+  padding: 0.75rem 1rem;
+  border: 2px solid #e5e7eb;
+  background: white;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  transition: all 0.3s ease;
+  position: relative;
+  min-height: 48px;
+}
+
+.radio-option input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  width: 0;
+  height: 0;
+}
+
+.radio-custom {
+  width: 20px;
+  height: 20px;
+  border: 2px solid #d1d5db;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+  background: white;
+}
+
+.radio-custom::after {
+  content: '';
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: white;
+  transform: scale(0);
+  transition: transform 0.2s ease;
+}
+
+.radio-icon {
+  width: 18px;
+  height: 18px;
+  opacity: 0.5;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.radio-label {
+  font-weight: 600;
+  font-size: 0.875rem;
+  transition: all 0.3s ease;
+}
+
+.radio-option.present {
+  color: #15803d;
+}
+
+.radio-option.present:hover {
+  border-color: #16a34a;
+  background: #f0fdf4;
+  transform: scale(1.02);
+}
+
+.radio-option.present.checked {
+  background: #16a34a;
+  border-color: #16a34a;
+  color: white;
+  box-shadow: 0 4px 6px rgba(22, 163, 74, 0.3);
+}
+
+.radio-option.present.checked .radio-custom {
+  border-color: white;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.radio-option.present.checked .radio-custom::after {
+  transform: scale(1);
+  background: white;
+}
+
+.radio-option.present.checked .radio-icon {
+  opacity: 1;
+}
+
+.radio-option.absent {
+  color: #b91c1c;
+}
+
+.radio-option.absent:hover {
+  border-color: #dc2626;
+  background: #fef2f2;
+  transform: scale(1.02);
+}
+
+.radio-option.absent.checked {
+  background: #dc2626;
+  border-color: #dc2626;
+  color: white;
+  box-shadow: 0 4px 6px rgba(220, 38, 38, 0.3);
+}
+
+.radio-option.absent.checked .radio-custom {
+  border-color: white;
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.radio-option.absent.checked .radio-custom::after {
+  transform: scale(1);
+  background: white;
+}
+
+.radio-option.absent.checked .radio-icon {
+  opacity: 1;
+}
+
+/* Submit Button */
+.submit-section {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+  animation: slideUp 0.8s ease-out;
+}
+
+.btn-submit {
+  padding: 1rem 3rem;
+  background: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(59, 130, 246, 0.3);
+}
+
+.btn-submit:hover:not(:disabled) {
+  background: #2563eb;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(59, 130, 246, 0.4);
+}
+
+.btn-submit:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-submit svg {
+  width: 24px;
+  height: 24px;
+}
+
+.spinner-small {
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-top: 3px solid white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+/* Empty State */
+.empty-state {
+  background: white;
+  padding: 4rem 2rem;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  border: 1px solid #e5e7eb;
+  animation: slideUp 0.5s ease-out;
+}
+
+.empty-state-icon {
+  width: 80px;
+  height: 80px;
+  background: #eff6ff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.empty-state-icon svg {
+  width: 48px;
+  height: 48px;
+  color: #3b82f6;
+}
+
+.empty-state h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 0;
+}
+
+.empty-state p {
+  color: #6b7280;
+  font-size: 1rem;
+  margin: 0;
+}
+
+.empty-state-hint {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: #fef3c7;
+  border: 1px solid #fcd34d;
+  border-left: 4px solid #eab308;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  color: #92400e;
+  font-size: 0.875rem;
+  margin-top: 1rem;
+}
+
+.empty-state-hint svg {
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.no-data {
+  text-align: center;
+  padding: 3rem;
+  color: #6b7280;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.no-data svg {
+  width: 60px;
+  height: 60px;
+  color: #9ca3af;
+  opacity: 0.5;
+}
+
+.no-data p {
+  font-size: 1rem;
+  margin: 0;
+}
+
+/* Loading */
+.loading-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 60vh;
+  gap: 1rem;
+}
+
+.spinner {
+  width: 50px;
+  height: 50px;
+  border: 4px solid #f3f4f6;
+  border-top: 4px solid #3b82f6;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .attendance-marking-container {
+    padding: 1rem;
+  }
+
+  .page-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .header-content {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .header-icon {
+    width: 48px;
+    height: 48px;
+  }
+
+  .header-icon svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .page-title {
+    font-size: 1.5rem;
+  }
+
+  .current-time-badge {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .filters-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .bulk-action-group {
+    flex-direction: column;
+  }
+
+  .stats-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .students-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .card-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .search-box {
+    width: 100%;
+    max-width: 100%;
+    min-width: 100%;
+  }
+
+  .student-card {
+    padding: 1rem;
+  }
+
+  .btn-submit {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .stats-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Students Table Styles */
+.students-table {
+  overflow-x: auto;
+  margin-top: 1rem;
+}
+
+.students-table table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.students-table thead {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+}
+
+.students-table thead th {
+  padding: 1rem;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+}
+
+.students-table thead th:first-child {
+  border-top-left-radius: 8px;
+}
+
+.students-table thead th:last-child {
+  border-top-right-radius: 8px;
+}
+
+.students-table tbody tr {
+  background: white;
+  border-bottom: 1px solid #e5e7eb;
+  transition: all 0.3s ease;
+}
+
+.students-table tbody tr:hover {
+  background: #f9fafb;
+  transform: scale(1.01);
+}
+
+.students-table tbody tr:last-child {
+  border-bottom: none;
+}
+
+.students-table tbody td {
+  padding: 1rem;
+  font-size: 0.95rem;
+  color: #374151;
+}
+
+.student-name {
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.student-email {
+  color: #6b7280;
+  font-size: 0.9rem;
+}
+
+.attendance-column {
+  text-align: center;
+  width: 150px;
+}
+
+/* Radio Button Group Styles */
+.radio-group {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+  align-items: center;
+}
+
+.radio-label {
+  position: relative;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.25rem;
+}
+
+.radio-label:hover .radio-text {
+  color: #374151;
+}
+
+.radio-label input[type="radio"] {
+  cursor: pointer;
+  width: 18px;
+  height: 18px;
+  margin: 0;
+  accent-color: #667eea;
+}
+
+.radio-text {
+  font-weight: 600;
+  font-size: 1rem;
+  color: #6b7280;
+  transition: color 0.2s ease;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+/* Present Radio Button */
+.radio-label.selected.present input[type="radio"] {
+  accent-color: #10b981;
+}
+
+.radio-label.selected.present .radio-text {
+  color: #10b981;
+  font-weight: 700;
+}
+
+/* Absent Radio Button */
+.radio-label.selected.absent input[type="radio"] {
+  accent-color: #ef4444;
+}
+
+.radio-label.selected.absent .radio-text {
+  color: #ef4444;
+  font-weight: 700;
+}
+
+/* Responsive Table */
+@media (max-width: 768px) {
+  .students-table {
+    font-size: 0.85rem;
+  }
+  
+  .students-table thead th,
+  .students-table tbody td {
+    padding: 0.75rem 0.5rem;
+  }
+  
+  .radio-label {
+    width: 40px;
+    height: 35px;
+  }
+  
+  .radio-text {
+    font-size: 1rem;
+  }
+  
+  .student-email {
+    font-size: 0.8rem;
+  }
+}

@@ -1,0 +1,242 @@
+.attendance-warning {
+  display: flex;
+  align-items: flex-start;
+  padding: 24px;
+  border-radius: 12px;
+  margin: 20px 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Severity levels */
+.attendance-warning.alert-warning {
+  background: linear-gradient(135deg, #fff5e6 0%, #ffe9cc 100%);
+  border-left: 5px solid #f59e0b;
+}
+
+.attendance-warning.alert-severe {
+  background: linear-gradient(135deg, #fff5f5 0%, #ffe5e5 100%);
+  border-left: 5px solid #ef4444;
+}
+
+.attendance-warning.alert-critical {
+  background: linear-gradient(135deg, #fee 0%, #fcc 100%);
+  border-left: 5px solid #dc2626;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    box-shadow: 0 4px 12px rgba(220, 38, 38, 0.2);
+  }
+  50% {
+    box-shadow: 0 4px 20px rgba(220, 38, 38, 0.4);
+  }
+}
+
+.warning-icon {
+  font-size: 36px;
+  margin-right: 20px;
+  flex-shrink: 0;
+  animation: bounce 1s ease-in-out infinite;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
+}
+
+.warning-content {
+  flex: 1;
+}
+
+.warning-content h4 {
+  margin: 0 0 16px 0;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.alert-warning h4 {
+  color: #d97706;
+}
+
+.alert-severe h4 {
+  color: #dc2626;
+}
+
+.alert-critical h4 {
+  color: #991b1b;
+}
+
+.warning-stats {
+  display: flex;
+  gap: 24px;
+  margin: 16px 0;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.7);
+  border-radius: 8px;
+  flex-wrap: wrap;
+}
+
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.stat-label {
+  font-size: 13px;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+.stat-value {
+  font-size: 20px;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.stat-value.danger {
+  color: #dc2626;
+}
+
+.warning-message {
+  margin: 16px 0;
+  padding: 12px;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: 6px;
+  border-left: 3px solid #f59e0b;
+}
+
+.warning-message p {
+  margin: 0;
+  color: #374151;
+  line-height: 1.6;
+  font-size: 15px;
+}
+
+.highlight-danger {
+  color: #dc2626;
+  font-size: 18px;
+  padding: 0 4px;
+}
+
+.highlight-success {
+  color: #10b981;
+  font-size: 18px;
+  padding: 0 4px;
+}
+
+.warning-consequences {
+  margin: 16px 0;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 8px;
+}
+
+.warning-consequences h5 {
+  margin: 0 0 12px 0;
+  color: #374151;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.warning-consequences ul {
+  margin: 0;
+  padding-left: 20px;
+  list-style-type: disc;
+}
+
+.warning-consequences li {
+  margin: 8px 0;
+  color: #4b5563;
+  line-height: 1.5;
+}
+
+.critical-note {
+  color: #991b1b !important;
+  font-weight: 600;
+  background: rgba(220, 38, 38, 0.1);
+  padding: 8px;
+  border-radius: 4px;
+  list-style: none !important;
+  margin-left: -20px !important;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.action-buttons button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  color: white;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.4);
+}
+
+.btn-secondary {
+  background: white;
+  color: #374151;
+  border: 2px solid #d1d5db;
+}
+
+.btn-secondary:hover {
+  background: #f9fafb;
+  border-color: #9ca3af;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .attendance-warning {
+    flex-direction: column;
+    padding: 16px;
+  }
+
+  .warning-icon {
+    margin-right: 0;
+    margin-bottom: 12px;
+  }
+
+  .warning-stats {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .action-buttons {
+    flex-direction: column;
+  }
+
+  .action-buttons button {
+    width: 100%;
+  }
+}
